@@ -1,0 +1,36 @@
+[workspace]
+resolver = "2"
+
+members = [
+    "libs",
+    "day1",
+    "day2",
+    "day3",
+    "day4",
+    "day5",
+    "day6",
+    "day7",
+    "day8",
+    "day9",
+    "day10",
+    "day11",
+    "day12",
+    "day13",
+    "day14",
+    "day15",
+    "day16",
+]
+
+[workspace.dependencies]
+libs = { version = "0.1.0", path = "./libs" }
+
+regex     = "1.10.2"
+itertools = "0.12.0"
+indexmap  = "2.1.0"
+rayon     = "1.8.0"
+
+[profile.release]
+panic         = "abort" # Strip expensive unwind on panic
+codegen-units = 1       # Compile crates one after another so the compiler can optimize better
+lto           = true    # Enable link time optimizations
+strip         = true    # Remove debug symbols
