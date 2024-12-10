@@ -1,14 +1,10 @@
 defmodule Aoc2024.Day02 do
   def part1(path) do
-    parse(path)
-    |> Stream.map(fn [first_report | rest] ->
-      Enum.reduce_while(rest, {first_report, nil}, &validate/2)
-    end)
-    |> Enum.count(&(&1 !== false))
+    parse(path) |> Enum.count(&safe_level?/1)
   end
 
   def part2(path) do
-    parse(path)
+    parse(path) |> Enum.count(fn level -> tolerated_permutations(level) |> Enum.any?(&safe_level?/1) end)
   end
 
   def parse(path) when is_binary(path) do
@@ -17,29 +13,27 @@ defmodule Aoc2024.Day02 do
     |> Enum.map(fn level -> String.split(level) |> Enum.map(&String.to_integer/1) end)
   end
 
-  def validate(curr_report, {prev_report, nil}) do
-    cond do
-      not safe_distance?(prev_report, curr_report) -> {:halt, false}
-      prev_report > curr_report -> {:cont, {curr_report, :dec}}
-      prev_report < curr_report -> {:cont, {curr_report, :inc}}
+  def safe_level?(level) when is_list(level), do: safe_level?(level, find_tolerance(level))
+
+  def safe_level?([_last_report], _), do: true
+
+  def safe_level?([report1 | [report2 | _] = rest], tolerance) do
+    if (report2 - report1) in tolerance do
+      safe_level?(rest, tolerance)
+    else
+      false
     end
   end
 
-  def validate(curr_report, {prev_report, :inc}) do
-    cond do
-      not safe_distance?(prev_report, curr_report) -> {:halt, false}
-      prev_report > curr_report -> {:halt, false}
-      prev_report < curr_report -> {:cont, {curr_report, :inc}}
-    end
-  end
+  def find_tolerance([report1, report2 | _]), do: if(report1 < report2, do: 1..3, else: -3..-1)
 
-  def validate(curr_report, {prev_report, :dec}) do
-    cond do
-      not safe_distance?(prev_report, curr_report) -> {:halt, false}
-      prev_report < curr_report -> {:halt, false}
-      prev_report > curr_report -> {:cont, {curr_report, :dec}}
-    end
-  end
+  def tolerated_permutations(level) when is_list(level), do: perms(level, [], [])
 
-  def safe_distance?(left, right), do: left !== right and abs(right - left) in 1..3
+  def perms([], _, level_permutations), do: Enum.reverse(level_permutations)
+
+  def perms([current_report | remaining_reports], used_reports, level_permutations) do
+    level_without_current_report = Enum.reverse(used_reports) ++ remaining_reports
+
+    perms(remaining_reports, [current_report | used_reports], [level_without_current_report | level_permutations])
+  end
 end
