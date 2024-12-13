@@ -8,7 +8,12 @@ defmodule Mix.Tasks.Aoc.Run do
   def run([<<day_num::binary-size(2), "/", part::binary-size(1), "/", input::binary>>]) do
     module = Module.concat([:Aoc2024, "Day#{day_num}"])
 
-    file_suffix = if input == "e", do: "example.txt", else: "txt"
+    file_suffix =
+      case input do
+        "" -> "txt"
+        "e" <> rest when rest in ["", "01"] -> "example01.txt"
+        "e02" -> "example02.txt"
+      end
 
     input_path = :code.priv_dir(:aoc2024) |> Path.join("day#{day_num}.#{file_suffix}")
 
