@@ -8,6 +8,16 @@ defmodule Aoc2024.Day05 do
     |> Enum.sum()
   end
 
+  def part2(input) do
+    {ordering, updates} = parse(input)
+
+    updates
+    |> Stream.reject(&valid_update?(&1, ordering))
+    |> Stream.map(fn update -> Enum.sort(update, &left_before_right?(&1, &2, ordering)) end)
+    |> Stream.map(&middle/1)
+    |> Enum.sum()
+  end
+
   def parse(input) do
     [ordering_list, updates_list] = String.split(input, "\n\n")
 
@@ -40,4 +50,8 @@ defmodule Aoc2024.Day05 do
   end
 
   def middle(list) when is_list(list), do: Enum.at(list, length(list) |> div(2))
+
+  def left_before_right?(left, right, %{} = ordering) do
+    (ordering[left] && Enum.member?(ordering[left], right)) || false
+  end
 end
