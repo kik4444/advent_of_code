@@ -1,6 +1,6 @@
 defmodule Aoc2024.Day05 do
-  def part1(path) do
-    {ordering, updates} = parse(path)
+  def part1(input) do
+    {ordering, updates} = parse(input)
 
     updates
     |> Stream.filter(&valid_update?(&1, ordering))
@@ -8,8 +8,8 @@ defmodule Aoc2024.Day05 do
     |> Enum.sum()
   end
 
-  def parse(path) do
-    [ordering_list, updates_list] = File.read!(path) |> String.split("\n\n")
+  def parse(input) do
+    [ordering_list, updates_list] = String.split(input, "\n\n")
 
     parsed_ordering =
       ordering_list

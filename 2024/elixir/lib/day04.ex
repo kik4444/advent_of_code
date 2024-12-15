@@ -1,6 +1,6 @@
 defmodule Aoc2024.Day04 do
-  def part1(path) do
-    {grid, width, height} = parse(path)
+  def part1(input) do
+    {grid, width, height} = parse(input)
 
     # "d" means delta.
     for row <- width,
@@ -16,8 +16,8 @@ defmodule Aoc2024.Day04 do
     end
   end
 
-  def part2(path) do
-    {grid, width, height} = parse(path)
+  def part2(input) do
+    {grid, width, height} = parse(input)
 
     # Not interested in "A"s at the start or end of a row or column
     # because they can't have any neighbors.
@@ -32,9 +32,9 @@ defmodule Aoc2024.Day04 do
     end
   end
 
-  def parse(path) do
+  def parse(input) do
     grid =
-      File.read!(path)
+      input
       |> String.split("\n", trim: true)
       |> Enum.map(fn line -> String.graphemes(line) |> List.to_tuple() end)
       |> List.to_tuple()

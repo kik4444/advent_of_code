@@ -1,14 +1,14 @@
 defmodule Aoc2024.Day02 do
-  def part1(path) do
-    parse(path) |> Enum.count(&safe_level?/1)
+  def part1(input) do
+    parse(input) |> Enum.count(&safe_level?/1)
   end
 
-  def part2(path) do
-    parse(path) |> Enum.count(fn level -> tolerated_permutations(level) |> Enum.any?(&safe_level?/1) end)
+  def part2(input) do
+    parse(input) |> Enum.count(fn level -> tolerated_permutations(level) |> Enum.any?(&safe_level?/1) end)
   end
 
-  def parse(path) when is_binary(path) do
-    File.read!(path)
+  def parse(input) when is_binary(input) do
+    input
     |> String.split("\n", trim: true)
     |> Enum.map(fn level -> String.split(level) |> Enum.map(&String.to_integer/1) end)
   end

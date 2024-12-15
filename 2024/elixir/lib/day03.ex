@@ -1,10 +1,10 @@
 defmodule Aoc2024.Day03 do
-  def part1(path) do
-    parse_valid_muls(File.read!(path))
+  def part1(input) do
+    parse_valid_muls(input)
   end
 
-  def part2(path) do
-    find_muls(File.read!(path), :do, [])
+  def part2(input) do
+    find_muls(input, :do, [])
     |> Stream.map(&parse_valid_muls/1)
     |> Enum.sum()
   end
