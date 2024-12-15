@@ -17,6 +17,6 @@ defmodule Mix.Tasks.Aoc.Run do
 
     input_path = :code.priv_dir(:aoc2024) |> Path.join("day#{day_num}.#{file_suffix}")
 
-    IO.inspect(apply(module, :"part#{part}", [input_path]))
+    IO.inspect(apply(module, :"part#{part}", [input_path]), charlists: :as_lists)
   end
 end
