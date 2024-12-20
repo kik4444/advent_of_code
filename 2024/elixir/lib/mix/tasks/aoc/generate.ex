@@ -24,11 +24,11 @@ defmodule Mix.Tasks.Aoc.Generate do
       file,
       """
       defmodule Aoc2024.Day#{day} do
-        def part1(path) do
+        def part1(input) do
         # TODO
       end
 
-      def part2(path) do
+      def part2(input) do
         # TODO
         end
       end
