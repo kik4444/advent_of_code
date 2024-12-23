@@ -1,0 +1,18 @@
+[package]
+name = "rust-aoc"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+clap = { version = "4.5.23", features = ["derive"] }
+indexmap = "2.7.0"
+rayon = "1.10.0"
+regex = "1.11.1"
+itertools = "0.13.0"
+rust-aoc-macros = { version = "0.1.0", path = "rust-aoc-macros" }
+
+[profile.release]
+panic = "abort"   # Strip expensive unwind on panic
+codegen-units = 1 # Compile crates one after another so the compiler can optimize better
+lto = true        # Enable link time optimizations
+strip = true      # Remove debug symbols
