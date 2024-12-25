@@ -38,7 +38,7 @@ fn main() {
         panic!("Unable to read input file {input_file}")
     };
 
-    let function = rust_aoc::get_solution(args.year, args.day, args.part);
+    let function = aoc::get_solution(args.year, args.day, args.part);
 
     function(&input)
 }

@@ -1,1 +1,1 @@
-rust_aoc_macros::import_solutions!();
+aoc_macros::import_solutions!();
