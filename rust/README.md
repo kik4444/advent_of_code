@@ -1,13 +1,16 @@
 # Running
-Run with e.g. `cargo run -q -- -y 2023 -d 1 -p 1`.
+Run with `cargo run -q -- -y 2023 -d 1 -p 1`.
+
 To use example inputs, add `e`, `e1` or `e2` to the above command.
 
-# Inputs
-Add input files in `./src/year*/input/` with this format:
-```
-day01.txt
-day01.example01.txt
+For help, run `cargo run -- --help`.
 
-day03.txt
-day03.example02.txt
+# Inputs
+Add input files in `./src/year*/input/*.txt`. For example:
+```
+./src/year2023/input/day01.txt
+./src/year2023/input/day01.example01.txt
+
+./src/year2023/input/day03
+./src/year2023/input/day03.example01.txt
 ```
