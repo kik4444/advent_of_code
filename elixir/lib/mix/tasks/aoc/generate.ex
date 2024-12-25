@@ -20,6 +20,12 @@ defmodule Mix.Tasks.Aoc.Generate do
     input_file = Path.join(input_dir, "#{day_string}.txt")
     example_input_file = Path.join(input_dir, "#{day_string}.example01.txt")
 
+    with year_dir <- Path.dirname(ex_file), false <- File.exists?(year_dir) do
+      File.mkdir!(year_dir)
+    end
+
+    if not File.exists?(input_dir), do: File.mkdir!(input_dir)
+
     File.write!(
       ex_file,
       """
