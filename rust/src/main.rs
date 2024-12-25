@@ -22,21 +22,15 @@ struct Args {
     input: Option<String>,
 }
 
-const SRC_DIR: &str = concat!(env!("CARGO_MANIFEST_DIR"), "/src");
-
 fn main() {
     let args = Args::parse();
 
+    const SRC_DIR: &str = concat!(env!("CARGO_MANIFEST_DIR"), "/src");
+
     let input_file = match args.input.as_deref() {
         None => format!("{SRC_DIR}/year{}/input/day{:0>2}.txt", args.year, args.day),
-        Some("e") | Some("e1") => format!(
-            "{SRC_DIR}/year{}/input/day{:0>2}.example01.txt",
-            args.year, args.day
-        ),
-        Some("e2") => format!(
-            "{SRC_DIR}/year{}/input/day{:0>2}.example02.txt",
-            args.year, args.day
-        ),
+        Some("e") | Some("e1") => format!("{SRC_DIR}/year{}/input/day{:0>2}.example01.txt", args.year, args.day),
+        Some("e2") => format!("{SRC_DIR}/year{}/input/day{:0>2}.example02.txt", args.year, args.day),
         Some(other) => panic!("unknown input {other}"),
     };
 
