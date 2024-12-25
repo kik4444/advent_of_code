@@ -1,6 +1,6 @@
 defmodule Mix.Tasks.Aoc.Generate do
-  @moduledoc "Run with e.g. `mix aoc.generate -y 2024 -d 1`"
-  @shortdoc @moduledoc
+  @moduledoc "Generate an Advent of Code day."
+  @shortdoc "Run with `mix aoc.generate -y 2024 -d 1`"
 
   use Mix.Task
 
@@ -58,7 +58,7 @@ defmodule Mix.Tasks.Aoc.Generate do
           required: true,
           short: ?y,
           long: ~c"year",
-          help: ~c"Year to run"
+          help: ~c"Year to generate."
         },
         %{
           name: :day,
@@ -66,7 +66,7 @@ defmodule Mix.Tasks.Aoc.Generate do
           required: true,
           short: ?d,
           long: ~c"day",
-          help: ~c"Day in year to run."
+          help: ~c"Day in year to generate."
         }
       ],
       handler: & &1,

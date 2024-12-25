@@ -1,6 +1,6 @@
 defmodule Mix.Tasks.Aoc.Run do
-  @moduledoc "Run with e.g. `mix aoc.run -y 2024 -d 1 -p 1`"
-  @shortdoc @moduledoc
+  @moduledoc "Run an Advent of Code solution."
+  @shortdoc "Run with `mix aoc.run -y 2024 -d 1 -p 1`"
 
   use Mix.Task
 
@@ -36,7 +36,7 @@ defmodule Mix.Tasks.Aoc.Run do
           required: true,
           short: ?y,
           long: ~c"year",
-          help: ~c"Year to run"
+          help: ~c"Year to run."
         },
         %{
           name: :day,
