@@ -1,4 +1,4 @@
-defmodule Aoc2024.Day05 do
+defmodule Aoc.Year2024.Day05 do
   def part1(input) do
     {ordering, updates} = parse(input)
 

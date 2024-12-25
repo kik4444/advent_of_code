@@ -1,9 +1,9 @@
-defmodule Aoc2024.Day06.Lab do
+defmodule Aoc.Year2024.Day06.Lab do
   defstruct grid: {}, width: 0, height: 0, x: 0, y: 0, direction: :up
 end
 
-defmodule Aoc2024.Day06 do
-  alias Aoc2024.Day06.Lab
+defmodule Aoc.Year2024.Day06 do
+  alias Aoc.Year2024.Day06.Lab
 
   def part1(input) do
     %Lab{} = lab = parse(input)

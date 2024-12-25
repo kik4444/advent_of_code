@@ -20,7 +20,10 @@ erl_crash.dump
 *.ez
 
 # Ignore package tarball (built via "mix hex.build").
-aoc2024-*.tar
+aoc-*.tar
 
 # Temporary files, for example, from tests.
 /tmp/
+
+# Input files.
+/priv/input/*/*.txt

@@ -1,4 +1,4 @@
-defmodule Aoc2024.Day03 do
+defmodule Aoc.Year2024.Day03 do
   def part1(input) do
     parse_valid_muls(input)
   end

@@ -1,4 +1,4 @@
-defmodule Aoc2024.Day02 do
+defmodule Aoc.Year2024.Day02 do
   def part1(input) do
     parse(input) |> Enum.count(&safe_level?/1)
   end
