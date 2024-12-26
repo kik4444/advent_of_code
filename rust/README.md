@@ -1,7 +1,9 @@
 # Running
-Run with `cargo run -q -- -y 2023 -d 1 -p 1`.
+Run with `cargo run -q -- run -y 2023 -d 1 -p 1`.
 
 To use example inputs, add `e`, `e1` or `e2` to the above command.
+
+Generate new days with `cargo run -q -- generate -y 2024 -d 7`.
 
 For help, run `cargo run -- --help`.
 

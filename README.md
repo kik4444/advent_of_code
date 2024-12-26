@@ -1,7 +1,7 @@
 # Advent of Code
 Every language is a separate project. Any year, day and part can be run with command line arguments.
 
-For example, to run the Rust 2023 day 1 part 1 solution, do `cd rust; cargo run -- -y 2023 -d 1 -p 1`.
+For example, to run the Rust 2023 day 1 part 1 solution, do `cd rust; cargo run -- run -y 2023 -d 1 -p 1`.
 
 To run the Elixir 2024 day 1 part 1 solution, do `cd elixir; mix aoc.run -y 2024 -d 1 -p 1`.
 
