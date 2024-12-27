@@ -1,14 +1,14 @@
 defmodule Aoc.Year2015.Day03 do
   def part1(input) do
-    solve(parse(input))
-    |> then(fn {_, visited} -> MapSet.size(visited) end)
+    {_, visited} = solve(parse(input))
+    MapSet.size(visited)
   end
 
   def part2(input) do
     {santa_directions, robo_directions} =
       parse(input)
       |> Enum.chunk_every(2)
-      |> Enum.map(fn [left, right] -> {left, right} end)
+      |> Enum.map(&List.to_tuple/1)
       |> Enum.unzip()
 
     {_, santa_visited} = solve(santa_directions)
@@ -17,11 +17,11 @@ defmodule Aoc.Year2015.Day03 do
     MapSet.union(santa_visited, robo_visited) |> MapSet.size()
   end
 
-  def solve(parsed_input) do
+  def solve(directions) do
     position = %{x: 0, y: 0}
     visited = MapSet.new() |> MapSet.put(position)
 
-    Enum.reduce(parsed_input, {position, visited}, fn direction, {position, visited} ->
+    Enum.reduce(directions, {position, visited}, fn direction, {position, visited} ->
       new_pos =
         case direction do
           "^" -> put_in(position.y, position.y - 1)
