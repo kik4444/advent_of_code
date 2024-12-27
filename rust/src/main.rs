@@ -28,7 +28,7 @@ struct Run {
     day: u8,
 
     /// Part of day to run.
-    #[arg(short, long, value_parser = clap::value_parser!(u8).range(1..=2))]
+    #[arg(short, long, value_parser = clap::value_parser!(u8).range(1..=2), default_value_t = 1)]
     part: u8,
 
     /// Which input to use.

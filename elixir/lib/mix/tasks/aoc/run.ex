@@ -49,7 +49,7 @@ defmodule Mix.Tasks.Aoc.Run do
         %{
           name: :part,
           type: {:integer, [1, 2]},
-          required: true,
+          default: 1,
           short: ?p,
           long: ~c"part",
           help: ~c"Part of day to run."
